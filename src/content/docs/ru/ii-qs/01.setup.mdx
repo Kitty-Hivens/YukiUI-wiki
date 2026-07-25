@@ -18,19 +18,10 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 - Автоматическая установка: смотрите раздел [Автоматическая установка](#автоматическая-установка) ниже.
 - Ручная установка: смотрите раздел [Ручная установка](#ручная-установка) ниже.
-- Форки: смотрите раздел [Форки](#форки) ниже.
   :::
 
-:::tip[Переход с AGS версии]
-_Пропустите, если не переходите с версии на AGS. Или разберитесь сами, если у вас не Arch Linux_
-
-Версия на Quickshell должна работать прямо после установки, но можете удалить старые пакеты перед установкой новых:
-
-```sh
-sudo pacman -Rs $(pacman -Q | grep "illogical-impulse-" | awk '{print $1}')
-```
-
-потом устанавливайте.
+:::caution[Версия Hyprland]
+Целевая версия -- Hyprland 0.56, который настраивается на Lua. Конфигурация Hyprland здесь только на Lua, поэтому более старый Hyprland её не прочитает.
 :::
 
 ## Автоматическая установка
@@ -42,12 +33,8 @@ sudo pacman -Rs $(pacman -Q | grep "illogical-impulse-" | awk '{print $1}')
   - [Arch Linux](https://archlinux.org/) и [EndeavourOS](https://endeavouros.com/) поддерживаются как пользователями, так и разработчиками. Arch более минималистичен, в то время как EndeavourOS предлагает более простую установку.
   - [CachyOS](https://cachyos.org/) использует неофициальные репозитории Arch, но поскольку разрабатывается с поддержкой AUR, все должно работать.
   - Другие [дистрибутивы на базе Arch](https://wiki.archlinux.org/title/Arch-based_distributions) используют свои репозитории и поддерживаются только частично. Особенно [Manjaro](https://manjaro.org/), который известен плохой совместимостью с AUR.
-- **Поддержка от комьюнити:**
-  - [Gentoo](https://www.gentoo.org/) (см. [sdata/dist-gentoo/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-gentoo/README.md) для дополнительной информации).
-  - [Fedora](https://fedoraproject.org/) (см. [sdata/dist-fedora/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-fedora/README.md) для дополнительной информации).
-  - Другие дистрибутивы: Мы рады вашим вкладам! Смотрите [эту страницу](../../dev/inst-script/#help-wanted), если хотите помочь.
 - **В работе:**
-  - `dist-nix`, находящийся в разработке создан для поддержки всех дистрибутивов. Для дистрибутивов, которые используют старые пакеты, например, [Debian](https://www.debian.org/), это фактически единственный способ установить illogical-impulse. Смотрите [#2382](https://github.com/end-4/dots-hyprland/discussions/2382), чтобы попробовать.
+  - `dist-nix`, находящийся в разработке, нацелен на NixOS через Nix и home-manager.
     :::
 
 Выберите одну из опций ниже, затем следуйте инструкции.
@@ -73,7 +60,7 @@ bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get)
 Если хотите клонировать в другое место, просто добавьте путь, например:
 
 ```bash
-bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/YukiUI
 ```
 
 Если хотите минимальную установку, предоставляющую в основном, только Hyprland и Quickshell, добавьте опцию --core вот так:
@@ -85,7 +72,7 @@ bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) -- --core
 Чтобы использовать эти опции вместе, напишите:
 
 ```bash
-bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/YukiUI -- --core
 ```
 
 :::
@@ -98,7 +85,7 @@ bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-
 ```bash
 cd ~/.cache                                      # Не важно, в какой директории
 git clone https://github.com/Kitty-Hivens/YukiUI # Клонирование репозиторий
-cd dots-hyprland                                 # Перемещение в рабочую директорию
+cd YukiUI                                        # Перемещение в рабочую директорию
 ./setup install                                  # Запуск скрипта
 ```
 
@@ -116,20 +103,6 @@ cd dots-hyprland                                 # Перемещение в р�
 
 Это полезно, если вы хотите продолжить неудачную установку или выполнить обновление
 :::
-
-## Форки
-
-Ниже - ссылки на форки от комьюнити для других дистрибутивов
-:::caution
-
-- Они были созданы, когда скрипт не поддерживал не-Arch дистрибутивы.
-- Некоторые из них для версии illogical-impulse на AGS
-  :::
-
-- NixOS
-  - См. [discussion #1093](https://github.com/end-4/dots-hyprland/discussions/1093)
-- OpenSUSE
-  - См. [discussion #485](https://github.com/end-4/dots-hyprland/discussions/485)
 
 ## Ручная установка
 

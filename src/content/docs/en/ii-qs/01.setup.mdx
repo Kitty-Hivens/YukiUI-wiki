@@ -15,42 +15,21 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 - [Automated](#automated-installation): with a script
 - [Manual](#manual-installation): clone and copy manually
-- [Community forks](#forks): installation specialized for certain distros
-- [3rd-party distros](#3rd-party-distros): OSes with a flavor offering illogical-impulse out-of-the-box
 
-:::tip[Migration from AGS version]
-*Skip this if you aren't using the old AGS version or figure out yourself if not using Arch Linux*
-
-The Quickshell version should work just fine after installation, but you can uninstall the old packages before installing the new ones:
-
-```sh
-sudo pacman -Rs $(pacman -Q | grep "illogical-impulse-" | awk '{print $1}')
-```
-
-then perform installation.
+:::caution[Hyprland version]
+This targets Hyprland 0.56, which configures itself in Lua. The Hyprland config shipped here is Lua-only, so an older Hyprland will not read it.
 :::
 
 ## Automated installation
 
-:::caution[Hyprland 0.55?]
-If your distro has not shipped Hyprland 0.55 and/or you're not ready for it, you should switch to the Pre-Hyprland Luaification release. Example installation:
-```
-git clone --recursive https://github.com/Kitty-Hivens/YukiUI && cd dots-hyprland && git checkout 2026.05.11 && ./setup install
-```
-:::
-
 ### Distro support
 The script auto detects the distro before proceeding.
 Here's a preview about the distro support status.
-- **Supported by developers:**
+- **Supported:**
   - [Arch Linux](https://archlinux.org/) and [EndeavourOS](https://endeavouros.com/) are most well-supported
   - [CachyOS](https://cachyos.org/) should work fine, though in rare cases differences in packages can be an issue for inexperienced users. Same goes for other Arch-based distros.
-- **Supported by community:**
-  - [Gentoo](https://www.gentoo.org/) (see [sdata/dist-gentoo/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-gentoo/README.md) for extra information).
-  - [Fedora](https://fedoraproject.org/) (see [sdata/dist-fedora/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-fedora/README.md) for extra information).
-  - Other distros: We welcome contributions! See [this page](../../dev/inst-script/#help-wanted) if you're willing to help.
 - **WIP:**
-  - The work-in-progress `dist-nix` tries to provide cross-distro support. For distros using relatively old packages such as [Debian](https://www.debian.org/), this is almost the only way to install illogical-impulse. See [#2382](https://github.com/end-4/dots-hyprland/discussions/2382) to have a try.
+  - The work-in-progress `dist-nix` targets NixOS through Nix and home-manager.
 
 
 Use either methods below. The former is a more convenient wrapper for the latter, though questionable for some people.
@@ -68,7 +47,7 @@ It clones the repo to `~/.cache/YukiUI` by default and run `./setup install` for
 ### Advanced: Customize installation
 To clone to somewhere else, just append the path, e.g.
 ```bash
-bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/YukiUI
 ```
 To use a more minimal installation which mainly involves Hyprland and Quickshell,
 pass `--core` to the local install script (`./setup install`) by running:
@@ -77,7 +56,7 @@ bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) -- --core
 ```
 To combine the two behaviors above, run
 ```bash
-bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/YukiUI -- --core
 ```
 
 
@@ -88,7 +67,7 @@ Run the commands below:
 ```bash
 cd ~/.cache                                      # Your choice, doesn't matter
 git clone https://github.com/Kitty-Hivens/YukiUI # Clone the repo
-cd dots-hyprland                                 # Go to the cloned repo
+cd YukiUI                                        # Go to the cloned repo
 ./setup install                                  # Run the install script
 ```
 
@@ -107,14 +86,6 @@ You can always re-run `./setup install` and choose to only perform certain actio
 It's useful when you want to resume a failed attempt or update.
 :::
 
-## Forks
-The following links are community forks for other distros. **These were created when cross-distro support was limited. Some of them are for the old AGS-powered version of the dotfiles.**
-
-- NixOS
-  - See [discussion #1093](https://github.com/end-4/dots-hyprland/discussions/1093)
-- OpenSUSE
-  - See [discussion #485](https://github.com/end-4/dots-hyprland/discussions/485)
-  
 ## Manual installation
 
 For basically any distro
@@ -158,12 +129,6 @@ Read the content of `sdata/subcmd-install/2.setups.sh`.
 - Once you're done, log in again into Hyprland.
   - `Ctrl`+`Super`+`T` to select a wallpaper.
   - `Super`+`/` for a list of keybinds. Have fun!
-
-## 3rd-party distros
-
-**We list these distros here for your information. We do not directly endorse them and you should exercise discretion when selecting your OS.**
-
-- [El3ssar's illogical-impulse-iso](https://github.com/El3ssar/illogical-impulse-iso): Arch ISO that ships illogical-impulse as is without any modifications
 
 # Post installation
 ## Not so optional stuff
@@ -245,16 +210,6 @@ So, here comes the DM (Display Manager, also called "LM", i.e. Login Manager).
     - The desktop files under these directories contain the information of the graphical environments.
 
 # Updating
-
-:::caution[Update to Hyprland 0.55]
-Hyprland 0.55 introduces configuration in Lua instead of Hyprlang. While you can still use the old format, there is already some breaking changes with the relocation of some variables. Hyprland will only give you two months to migrate to Lua.
-
-- If you choose to stick with 0.54 for now, scroll up to the "Hyprland 0.55?" note in the Automated installation section. 
-- If you're ready for 0.55, here's the procedure:
-  - Move `~/.config/hypr/custom` to somewhere else and delete that folder
-  - Run `git pull` and `./setup install` as usual
-  - Using the old files and the new config files given by the dotfiles as a reference, rewrite your old config files in the new .lua files
-:::
 
 :::note[TL;DR]
 Assuming you've used the online install script on Arch(-based) distros during installation, you can run the command below to update:
