@@ -165,7 +165,8 @@ source ~/.config/zshrc.d/dots-hyprland.zsh
 
 ## Launching Hyprland
 - To launch Hyprland, you can use a DM (Display Manager) or just `tty`.
-- Hyprland wiki recommends launching Hyprland with the uswm-managed session, but we don't. Using this does not break the dotfiles, but you might get autostarted junk from other desktop environments (for example duplicate authentication dialogs)
+- Launch the uwsm-managed session. `hyprland/execs.lua` runs `uwsm finalize` and starts the shell as a `uwsm app` unit, so a plain Hyprland session comes up without the shell.
+- Side effect of a systemd-managed session: its processes belong to no logind session, which makes polkit treat them as inactive. That is why `49-vt-switch.rules` is installed -- without it `Ctrl`+`Alt`+`F<n>` stops switching consoles.
 
 See [Hyprland wiki](https://wiki.hypr.land/Getting-Started/Master-Tutorial/#launching-hyprland) for details. Below are some extra hints.
 
