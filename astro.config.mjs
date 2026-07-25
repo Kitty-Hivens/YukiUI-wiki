@@ -4,21 +4,20 @@ import starlightThemeNova from 'starlight-theme-nova';
 
 // https://starlight.astro.build/reference/configuration
 export default defineConfig({
-  site: 'https://ii.clsty.link',
-  base: '',
+  site: 'https://kitty-hivens.github.io',
+  base: '/YukiUI-wiki',
   integrations: [
     starlight({
       plugins: [
-        starlightThemeNova(/* options */), 
+        starlightThemeNova(/* options */),
       ],
-      title: 'illogical-impulse',
-      logo: { src: './src/assets/illogical-impulse.svg', replacesTitle: false, },
+      title: 'YukiUI',
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/end-4/dots-hyprland', },
-        { icon: 'pen', label: 'GitHub (wiki)', href: 'https://github.com/end-4/dots-hyprland-wiki', },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/Kitty-Hivens/YukiUI', },
+        { icon: 'pen', label: 'GitHub (wiki)', href: 'https://github.com/Kitty-Hivens/YukiUI-wiki', },
       ],
       editLink: {
-        baseUrl: 'https://github.com/end-4/dots-hyprland-wiki/tree/main',
+        baseUrl: 'https://github.com/Kitty-Hivens/YukiUI-wiki/tree/main',
       },
       customCss: ['./src/styles/custom.css'],
       tableOfContents: { minHeadingLevel: 1, maxHeadingLevel: 2, },
@@ -34,126 +33,32 @@ export default defineConfig({
           lang: 'en',
         },
 
-        'es': {
-          label: 'Español', //Spanish
-          lang: 'es',
-        },
-
-        'fr': {
-          label: 'Français', //French
-          lang: 'fr',
-        },
-        // 'ja': {
-        //   label: 'Japanese', //Japanese
-        //   lang: 'ja',
-        // },
-        // 'pl': {
-        //   label: 'Polish', //Polish
-        //   lang: 'pl',
-        // },
         'ru': {
           label: 'Русский', //Russian
           lang: 'ru',
-        },
-        'tr': {
-          label: 'Türkçe', //Turkish
-          lang: 'tr',
-        },
-        'vi': {
-          label: 'Tiếng Việt', // Vietnamese
-          lang: 'vi',
-        },
-        'zh-cn': {
-          label: '简体中文', //Simplified Chinese
-          lang: 'zh-CN',
-        },
-        'pt-br': {
-          label: 'Português do Brasil', //Brazilian Portuguese
-          lang: 'pt-BR',
-        },
-        'de-de': {
-          label: 'Deutsch', //German
-          lang: 'de-DE',
-        },
-        'zh-tw': {
-          label: '繁體中文（臺灣）', //Traditional Chinese (Taiwan)
-          lang: 'zh-TW',
         },
       },
       sidebar: [
         {
           label: 'General',
           translations: {
-            'vi': 'Chung',
-            'zh-CN': '通用',
-            'es': 'General',
             'ru': 'Общее',
-            'fr': 'Général',
-            'pt-BR': 'Geral',
-            'de-DE': 'Allgemein',
-            'tr': 'Genel',
-            'zh-TW': '一般',
           },
           autogenerate: { directory: 'general' },
         },
         {
-          label: 'illogical-impulse',
+          label: 'YukiUI',
           collapsed: false,
-          badge: { text: 'New', variant: 'success' },
           autogenerate: { directory: 'ii-qs' },
-        },
-        {
-          label: 'illogical-impulse (AGS)',
-          collapsed: true,
-          autogenerate: { directory: 'ii-ags' },
-        },
-        {
-          label: 'Old stuff',
-          collapsed: true,
-          translations: {
-            'vi': 'Kho lưu trữ (ko đc duy trì)',
-            'zh-CN': '存档（不再维护）',
-            'es': 'Archivos (no mantenidos)',
-            'ru': 'Прошлые версии (не поддерживаются)',
-            'fr': 'Archives (non maintenues)',
-            'pt-BR': 'Arquivos (não mantidos)',
-            'de-DE': 'Alte Inhalte',
-            'tr': 'Arşiv (bakımı yok)',
-            'zh-TW': '舊版內容（已停止維護）',
-          },
-          autogenerate: { directory: 'archives' },
         },
         {
           label: 'Dev Notes',
           collapsed: true,
           badge: { text: 'Dev' },
           translations: {
-            'vi': 'Ghi chú cho dev',
-            'zh-CN': '开发者笔记',
-            'es': 'Notas de desarrollo',
             'ru': 'Для разработчиков',
-            'fr': 'Notes de développement',
-            'pt-BR': 'Notas de desenvolvimento',
-            'de-DE': 'Entwickler Notizen',
-            'tr': 'Geliştirici Notları',
-            'zh-TW': '開發者筆記',
           },
           autogenerate: { directory: 'dev' },
-        },
-        {
-          label: 'Translate this wiki',
-          badge: { text: 'Help wanted', variant: 'note' },
-          translations: {
-            'zh-CN': '翻译此文档',
-            'es': 'Traducir esta wiki',
-            'ru': 'Помогите перевести вики',
-            'fr': 'Traduire ce wiki',
-            'pt-BR': 'Traduza essa wiki',
-            'de-DE': 'Übersetze dieses Wiki',
-            'tr': 'Bu wikiyi çevir',
-            'zh-TW': '翻譯此 wiki'
-          },
-          link: '/dev/doc-site-contrib',
         },
       ],
     }),

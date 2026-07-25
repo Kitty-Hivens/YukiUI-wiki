@@ -43,8 +43,8 @@ sudo pacman -Rs $(pacman -Q | grep "illogical-impulse-" | awk '{print $1}')
   - [CachyOS](https://cachyos.org/) использует неофициальные репозитории Arch, но поскольку разрабатывается с поддержкой AUR, все должно работать.
   - Другие [дистрибутивы на базе Arch](https://wiki.archlinux.org/title/Arch-based_distributions) используют свои репозитории и поддерживаются только частично. Особенно [Manjaro](https://manjaro.org/), который известен плохой совместимостью с AUR.
 - **Поддержка от комьюнити:**
-  - [Gentoo](https://www.gentoo.org/) (см. [sdata/dist-gentoo/README.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/dist-gentoo/README.md) для дополнительной информации).
-  - [Fedora](https://fedoraproject.org/) (см. [sdata/dist-fedora/README.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/dist-fedora/README.md) для дополнительной информации).
+  - [Gentoo](https://www.gentoo.org/) (см. [sdata/dist-gentoo/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-gentoo/README.md) для дополнительной информации).
+  - [Fedora](https://fedoraproject.org/) (см. [sdata/dist-fedora/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-fedora/README.md) для дополнительной информации).
   - Другие дистрибутивы: Мы рады вашим вкладам! Смотрите [эту страницу](../../dev/inst-script/#help-wanted), если хотите помочь.
 - **В работе:**
   - `dist-nix`, находящийся в разработке создан для поддержки всех дистрибутивов. Для дистрибутивов, которые используют старые пакеты, например, [Debian](https://www.debian.org/), это фактически единственный способ установить illogical-impulse. Смотрите [#2382](https://github.com/end-4/dots-hyprland/discussions/2382), чтобы попробовать.
@@ -64,28 +64,28 @@ sudo pacman -Rs $(pacman -Q | grep "illogical-impulse-" | awk '{print $1}')
 Запустите команды ниже:
 
 ```bash
-bash <(curl -s https://ii.clsty.link/get)
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get)
 ```
 
-Сначала репозиторий клонируется в `~/.cache/dots-hyprland`, а потом запускается `./setup install`.
+Сначала репозиторий клонируется в `~/.cache/YukiUI`, а потом запускается `./setup install`.
 
 :::tip[Дополнительные опции]
 Если хотите клонировать в другое место, просто добавьте путь, например:
 
 ```bash
-bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland
 ```
 
 Если хотите минимальную установку, предоставляющую в основном, только Hyprland и Quickshell, добавьте опцию --core вот так:
 
 ```bash
-bash <(curl -s https://ii.clsty.link/get) -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) -- --core
 ```
 
 Чтобы использовать эти опции вместе, напишите:
 
 ```bash
-bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland -- --core
 ```
 
 :::
@@ -97,7 +97,7 @@ bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland -- --core
 
 ```bash
 cd ~/.cache                                      # Не важно, в какой директории
-git clone https://github.com/end-4/dots-hyprland # Клонирование репозиторий
+git clone https://github.com/Kitty-Hivens/YukiUI # Клонирование репозиторий
 cd dots-hyprland                                 # Перемещение в рабочую директорию
 ./setup install                                  # Запуск скрипта
 ```
@@ -144,8 +144,8 @@ cd dots-hyprland                                 # Перемещение в р�
 ### Клонируем и перемещаемся в репозиторий
 
 ```bash
-t=~/.cache/dots-hyprland   # Не будем оставлять мусор в домашней папке
-git clone https://github.com/end-4/dots-hyprland.git "$t" --filter=blob:none --recurse-submodules
+t=~/.cache/YukiUI   # Не будем оставлять мусор в домашней папке
+git clone https://github.com/Kitty-Hivens/YukiUI.git "$t" --filter=blob:none --recurse-submodules
 cd "$t"
 ```
 
@@ -158,7 +158,7 @@ cd "$t"
 
 Для не-Arch дистрибутивов:
 
-- Найдите эквиваленты пакетов, список которых в [deps-info.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/deps-info.md) и установите их.
+- Найдите эквиваленты пакетов, список которых в [deps-info.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/deps-info.md) и установите их.
 - Если вы успешно установили это все на каком-нибудь не-Arch дистрибутиве, можете отправить PR. Смотрите [эту страницу](../../dev/inst-script/#help-wanted) для подробностей.
 
 ### Работа с правами/сервисами и т.д.
@@ -280,14 +280,14 @@ P.S. Рекомендуется отключить дисплей-менедже
 Если вы использовали онлайн-скрипт на Arch-дистрибутиве, обновление можно выполнить командой:
 
 ```bash
-cd ~/.cache/dots-hyprland && git stash && git pull && ./setup install
+cd ~/.cache/YukiUI && git stash && git pull && ./setup install
 ```
 
 :::
 
 Пока у нас нет автоматической системы проверки обновлений. Скрипт установки разработан так, чтобы его можно было запускать сколько угодно раз для обновления после синхронизации обновленных файлов из репозитория.
 
-1. С помощью `cd` перейдите в директорию репозитория. Обычно это `~/.cache/dots-hyprland`, если вы не клонировали его где-либо еще.
+1. С помощью `cd` перейдите в директорию репозитория. Обычно это `~/.cache/YukiUI`, если вы не клонировали его где-либо еще.
 2. Запустите `git stash`, чтобы сохранить локальные изменения. В идеальном случае, установка не должна трогать файлы, которыми управляет Git, но она может это делать, так что вам необходимо запускать эту команду.
 3. Запустите `git pull`, чтобы подтянуть актуальные обновления из репозитория.
 4. Снова запустите `./setup install`.

@@ -35,7 +35,7 @@ then perform installation.
 :::caution[Hyprland 0.55?]
 If your distro has not shipped Hyprland 0.55 and/or you're not ready for it, you should switch to the Pre-Hyprland Luaification release. Example installation:
 ```
-git clone --recursive https://github.com/end-4/dots-hyprland && cd dots-hyprland && git checkout 2026.05.11 && ./setup install
+git clone --recursive https://github.com/Kitty-Hivens/YukiUI && cd dots-hyprland && git checkout 2026.05.11 && ./setup install
 ```
 :::
 
@@ -46,8 +46,8 @@ Here's a preview about the distro support status.
   - [Arch Linux](https://archlinux.org/) and [EndeavourOS](https://endeavouros.com/) are most well-supported
   - [CachyOS](https://cachyos.org/) should work fine, though in rare cases differences in packages can be an issue for inexperienced users. Same goes for other Arch-based distros.
 - **Supported by community:**
-  - [Gentoo](https://www.gentoo.org/) (see [sdata/dist-gentoo/README.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/dist-gentoo/README.md) for extra information).
-  - [Fedora](https://fedoraproject.org/) (see [sdata/dist-fedora/README.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/dist-fedora/README.md) for extra information).
+  - [Gentoo](https://www.gentoo.org/) (see [sdata/dist-gentoo/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-gentoo/README.md) for extra information).
+  - [Fedora](https://fedoraproject.org/) (see [sdata/dist-fedora/README.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/dist-fedora/README.md) for extra information).
   - Other distros: We welcome contributions! See [this page](../../dev/inst-script/#help-wanted) if you're willing to help.
 - **WIP:**
   - The work-in-progress `dist-nix` tries to provide cross-distro support. For distros using relatively old packages such as [Debian](https://www.debian.org/), this is almost the only way to install illogical-impulse. See [#2382](https://github.com/end-4/dots-hyprland/discussions/2382) to have a try.
@@ -60,24 +60,24 @@ Use either methods below. The former is a more convenient wrapper for the latter
 
 Run the command below:
 ```bash
-bash <(curl -s https://ii.clsty.link/get)
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get)
 ```
 
-It clones the repo to `~/.cache/dots-hyprland` by default and run `./setup install` for you.
+It clones the repo to `~/.cache/YukiUI` by default and run `./setup install` for you.
 
 ### Advanced: Customize installation
 To clone to somewhere else, just append the path, e.g.
 ```bash
-bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland
 ```
 To use a more minimal installation which mainly involves Hyprland and Quickshell,
 pass `--core` to the local install script (`./setup install`) by running:
 ```bash
-bash <(curl -s https://ii.clsty.link/get) -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) -- --core
 ```
 To combine the two behaviors above, run
 ```bash
-bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland -- --core
+bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) ~/Downloads/dots-hyprland -- --core
 ```
 
 
@@ -87,7 +87,7 @@ bash <(curl -s https://ii.clsty.link/get) ~/Downloads/dots-hyprland -- --core
 Run the commands below:
 ```bash
 cd ~/.cache                                      # Your choice, doesn't matter
-git clone https://github.com/end-4/dots-hyprland # Clone the repo
+git clone https://github.com/Kitty-Hivens/YukiUI # Clone the repo
 cd dots-hyprland                                 # Go to the cloned repo
 ./setup install                                  # Run the install script
 ```
@@ -128,8 +128,8 @@ It's highly unrecommended to use, because it can waste lots of time from you.
 ### Clone and go to directory
 
 ```bash
-t=~/.cache/dots-hyprland   # Let's not trash your home folder
-git clone https://github.com/end-4/dots-hyprland.git "$t" --filter=blob:none --recurse-submodules
+t=~/.cache/YukiUI   # Let's not trash your home folder
+git clone https://github.com/Kitty-Hivens/YukiUI.git "$t" --filter=blob:none --recurse-submodules
 cd "$t"
 ```
 
@@ -139,7 +139,7 @@ For Arch(-based) distros:
   - You may also instead install suitable alternatives as you've found out.
 
 For non-Arch distros:
-- Figure out the equivalents of the packages listed in [deps-info.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/deps-info.md) and install them.
+- Figure out the equivalents of the packages listed in [deps-info.md](https://github.com/Kitty-Hivens/YukiUI/blob/main/sdata/deps-info.md) and install them.
 - If you've successfully finished installation on some non-Arch(-based) Linux distro, you may submit a PR. For details see [this page](../../dev/inst-script/#help-wanted).
 
 ### Setups for permission/services etc
@@ -259,12 +259,12 @@ Hyprland 0.55 introduces configuration in Lua instead of Hyprlang. While you can
 :::note[TL;DR]
 Assuming you've used the online install script on Arch(-based) distros during installation, you can run the command below to update:
 ```bash
-cd ~/.cache/dots-hyprland && git stash && git pull && ./setup install
+cd ~/.cache/YukiUI && git stash && git pull && ./setup install
 ```
 :::
 
 As of now we don't have an update checker nor an automated update system. Since the install script is designed to be idempotent, in order to update the dotfiles you have to run the install script again whenever you wish to update, after pulling the latest changes from the repository.
-1. `cd` into the repo directory. By default it should be on `~/.cache/dots-hyprland`, unless you cloned the repo somewhere else.
+1. `cd` into the repo directory. By default it should be on `~/.cache/YukiUI`, unless you cloned the repo somewhere else.
 2. Run `git stash` to save your local changes. Installation should not modify the local files tracked by Git ideally but this could happen unexpectedly, so you need to stash them before pulling the latest changes.
 3. Run `git pull` to fetch and pull the latest changes from the repo.
 4. Run `./setup install` again.

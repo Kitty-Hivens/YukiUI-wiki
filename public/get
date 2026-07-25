@@ -1,15 +1,15 @@
-# Online script for install dots-hyprland.
+# Online script for install YukiUI.
 #
 # By design this script is for running via piping to bash:
-#   bash <(curl -s https://ii.clsty.link/get) [parameters]
+#   bash <(curl -s https://kitty-hivens.github.io/YukiUI-wiki/get) [parameters]
 # Therefore shebang and execute permission are not needed.
 #
 # When running locally for testing, run
 #   bash get [parameters]
 
 me="-->online-setup<--"
-remote_repo=end-4/dots-hyprland
-local_path=~/.cache/dots-hyprland
+remote_repo=Kitty-Hivens/YukiUI
+local_path=~/.cache/YukiUI
 set -e
 function try { "$@" || sleep 0; }
 function x() {
